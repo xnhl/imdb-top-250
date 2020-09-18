@@ -21,7 +21,7 @@
 				<div class="show-rating show-info-item">
 					<div class="show-rating-actual" v-text="`${show.series_rating} / 10`"></div>
 					<div class="show-rating-fill">
-						<div class="show-rating-filler" :style="`width: ${show.series_rating * 10}%;`"></div>
+						<div class="show-rating-filler" :style="`width: ${show.series_rating * 10}%`"></div>
 					</div>
 				</div>
 			</div>
@@ -51,9 +51,9 @@ export default {
 	computed: {
 		chartInfo: function() {
 			let info = this.show.seasons.map(season => {
-				let s = season.season;
-				let labels = season.episodes.map(ep => ep.episode);
-				let ratings = season.episodes.map(ep => ep.rating);
+				let s = season.season
+				let labels = season.episodes.map(ep => ep.episode)
+				let ratings = season.episodes.map(ep => ep.rating)
 				return {
 					season: s,
 					labels,
@@ -63,22 +63,22 @@ export default {
 						fill: false
 					}]
 				}
-			});
+			})
 			return info
 		},
 		numRatings: function() {
-			let num = parseInt(this.show.series_rating_num).toLocaleString();
+			let num = parseInt(this.show.series_rating_num).toLocaleString()
 			return num
 		},
 		numSeasons: function() {
-			let num = this.show.seasons.length;
+			let num = this.show.seasons.length
 			return `${num} seasons`
 		},
 		numEps: function() {
-			let count = 0;
-			let num = this.show.seasons.length;
+			let count = 0
+			let num = this.show.seasons.length
 			for (let i = 0; i < num; i++) {
-				let numEps = this.show.seasons[i].episodes.length;
+				let numEps = this.show.seasons[i].episodes.length
 				count += numEps
 			}
 			return `${count} episodes`

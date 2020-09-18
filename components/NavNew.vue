@@ -40,49 +40,49 @@ export default {
 			this.$emit("toggle-theme")
 		},
 		handleScroll: function() {
-			let y = window.scrollY;
-			this.scroll_new = y;
-			let nav_wrapper = document.getElementById("navigation-wrapper");
+			let y = window.scrollY
+			this.scroll_new = y
+			let nav_wrapper = document.getElementById("navigation-wrapper")
 			if (this.scroll_new > this.scroll_old) {
-				nav_wrapper.classList.add("nav-hidden");
-				this.scroll_old = y;
+				nav_wrapper.classList.add("nav-hidden")
+				this.scroll_old = y
 			} else if (this.scroll_new < this.scroll_old) {
-				nav_wrapper.classList.remove("nav-hidden");
-				this.scroll_old = y;
+				nav_wrapper.classList.remove("nav-hidden")
+				this.scroll_old = y
 			}
 		},
 		sortShows: function(e) {
-			let shows = [...document.getElementsByClassName("show")];
-			let wrapper = document.getElementById("shows-wrapper");
-			let len = shows.length;
-			let sortprop = e.target.dataset.sortoption;
-			let aa, bb, sorted;
+			let shows = [...document.getElementsByClassName("show")]
+			let wrapper = document.getElementById("shows-wrapper")
+			let len = shows.length
+			let sortprop = e.target.dataset.sortoption
+			let aa, bb, sorted
 			if (sortprop == "name") {
 				sorted = shows.sort((a, b) => {
-					let aa = a.dataset[sortprop];
-					let bb = b.dataset[sortprop];
+					let aa = a.dataset[sortprop]
+					let bb = b.dataset[sortprop]
 					if (this.sortName % 2 == 0) {
 						return aa < bb ? -1 : aa > bb ? 1 : 0
 					} else {return aa > bb ? -1 : aa < bb ? 1 : 0}
-				});
+				})
 				this.sortName++
 			} else if (sortprop == "date") {
 				sorted = shows.sort((a, b) => {
-					let aa = parseInt(a.dataset[sortprop]);
-					let bb = parseInt(b.dataset[sortprop]);
+					let aa = parseInt(a.dataset[sortprop])
+					let bb = parseInt(b.dataset[sortprop])
 					if (this.sortDate % 2 == 0) {
 						return aa < bb ? -1 : aa > bb ? 1 : 0
 					} else {return aa > bb ? -1 : aa < bb ? 1 : 0}
-				});
+				})
 				this.sortDate++
 			} else if (sortprop == "rating") {
 				sorted = shows.sort((a, b) => {
-					let aa = parseFloat(a.dataset[sortprop]);
-					let bb = parseFloat(b.dataset[sortprop]);
+					let aa = parseFloat(a.dataset[sortprop])
+					let bb = parseFloat(b.dataset[sortprop])
 					if (this.sortRating % 2 == 0) {
 						return aa < bb ? -1 : aa > bb ? 1 : 0
 					} else {return aa > bb ? -1 : aa < bb ? 1 : 0}
-				});
+				})
 				this.sortRating++
 			}
 			for (let each of sorted) {
@@ -92,8 +92,8 @@ export default {
 		},
 		search: function() {
 			setTimeout(() => {
-				let searchText = document.getElementById("search").value.toLowerCase();
-				let shows = [...document.getElementsByClassName("show")];
+				let searchText = document.getElementById("search").value.toLowerCase()
+				let shows = [...document.getElementsByClassName("show")]
 				for (let each of shows) {
 					if (each.dataset.name.toLowerCase().indexOf(searchText) == -1) {
 						each.classList.add("hide")
@@ -102,15 +102,15 @@ export default {
 					}
 				}
 				window.scrollTo(0, 0)
-			}, 500);
+			}, 500)
 		},
 		toggleSorter: function() {
-			let sorter = document.getElementById("nav-sort");
+			let sorter = document.getElementById("nav-sort")
 			sorter.classList.toggle("hiding")
 		}
 	},
 	mounted() {
-		window.addEventListener('scroll', this.handleScroll);
+		window.addEventListener('scroll', this.handleScroll)
 	}
 }
 </script>

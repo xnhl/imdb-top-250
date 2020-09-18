@@ -18,7 +18,7 @@
 			<div class="show-rating show-info-item">
 				<div class="show-rating-actual" v-text="`${this.info.series_rating} / 10`"></div>
 				<div class="show-rating-fill">
-					<div class="show-rating-filler" :style="`width: ${this.info.series_rating * 10}%;`"></div>
+					<div class="show-rating-filler" :style="`width: ${this.info.series_rating * 10}%`"></div>
 				</div>
 			</div>
 		</div>
@@ -36,9 +36,9 @@ export default {
 	computed: {
 		chartInfo: function() {
 			let showInfo = this.info.seasons.filter(each => each !== null).map(each => {
-				let s = each.season ? each.season : null;
-				let labels = each.episodes.map(ep => ep.episode);
-				let ratings = each.episodes.map(ep => ep.rating);
+				let s = each.season ? each.season : null
+				let labels = each.episodes.map(ep => ep.episode)
+				let ratings = each.episodes.map(ep => ep.rating)
 				return {
 					season: s,
 					labels,
@@ -48,15 +48,15 @@ export default {
 						fill: false
 					}]
 				}
-			});
+			})
 			return showInfo
 		},
 		numRatings: function() {
-			let num = parseInt(this.info.series_rating_num).toLocaleString();
+			let num = parseInt(this.info.series_rating_num).toLocaleString()
 			return num
 		},
 		numSeasons: function() {
-			let num = this.info.seasons.length;
+			let num = this.info.seasons.length
 			if (parseInt(num) == 1) {
 				return `${num} season`
 			} else {
@@ -69,20 +69,20 @@ export default {
 	},
 	methods: {
 		changeChart: function(e) {
-			let charts = [...e.target.closest(".charts-wrapper").getElementsByClassName("chart")];
-			console.log(charts);
-			let chartsLen = charts.length;
-			console.log(chartsLen);
+			let charts = [...e.target.closest(".charts-wrapper").getElementsByClassName("chart")]
+			console.log(charts)
+			let chartsLen = charts.length
+			console.log(chartsLen)
 			if (e.target.classList.contains("next")) {
 				for (let i = 0; i < chartsLen; i++) {
 					if (!charts[i].classList.contains("hide")) {
-						charts[i].classList.add("hide");
+						charts[i].classList.add("hide")
 					}
 				}
 			} else if (e.target.classList.contains("prev")) {
 				for (let i = 0; i < chartsLen; i++) {
 					if (!charts[i].classList.contains("hide")) {
-						charts[i].classList.add("hide");
+						charts[i].classList.add("hide")
 					}
 				}
 			}
